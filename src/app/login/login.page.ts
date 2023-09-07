@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
     }    
   }
   irHome(){
-    this.router.navigate(['/folder/Inbox']);
+    this.router.navigate(['inicio']);
   }
 
   ngOnInit() {
