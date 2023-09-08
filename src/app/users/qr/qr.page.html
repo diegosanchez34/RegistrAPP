@@ -3,13 +3,22 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>QR</ion-title>
+    <ion-title>Código QR</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">qr</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="center-content">
+    <br>
+    <img height="200" src="assets/img/RegistrAPP.png"><br>
+    <br>
+    <ion-button id="escanear">Escanear Código QR</ion-button>
+    <ion-button id="generar">Generar Código QR</ion-button> 
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-item>
+    <img src="assets/img/footer2.png">
+  </ion-item>
+</ion-footer>

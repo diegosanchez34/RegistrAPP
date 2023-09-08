@@ -3,20 +3,18 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Iniciar sesión</ion-title>
+    <ion-title>Restablecer contraseña</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true"  class="ion-padding">
   <div class="center-content">
-    <img width="70%" src="../../assets/img/Logo Duoc UC.png"><br>
+    <p class="center-text">Para restablecer tu contraseña, a continuación ingresa tu usuario</p>
   </div>
   <ion-item><ion-input type="text" [(ngModel)]="usuario" label="Usuario" placeholder="Ingrese su usuario"></ion-input></ion-item>
-  <ion-item><ion-input type="password" [(ngModel)]="clave" label="Contraseña" placeholder="Ingrese su contraseña"></ion-input></ion-item>
   <br>
-  <ion-button id="ingresar" (click)="verificar()" expand="block">INGRESAR</ion-button>
-  <br>
-  <p class="center-text">¿Olvidó su contraseña? <a [routerLink]="['/recuperar']">Recupérala aquí. </a></p>
+  <ion-button id="recuperar" (click)="verificar()" expand="block">RECUPERAR</ion-button>
+
 </ion-content>
 
 <ion-footer >

@@ -7,19 +7,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">inicio</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <p style="text-align: center"><img src="../../assets/img/Logo Duoc UC.png"></p> 
-  <br>
-  <h1>Bienvenido, </h1>
-
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="center-content">
+    <h1 class="center-text">Bienvenido, {{usuario}}</h1>
+    <br>
+    <img height="200" src="assets/img/3449610.png">
+    <br>
+    <p class="center-text"><b>RegistrAPP</b> te ayudará a mejorar tu experiencia en el Duoc UC, agilizando procesos y dándote mayor eficiencia durante tus horas de estudio.</p>
+  </div>
 </ion-content>
-<ion-footer [translucent]="true">
-  <ion-toolbar>
-    <p style="text-align: center"><img src="../../assets/img/footer1.png"></p> 
-  </ion-toolbar>
+
+<ion-footer>
+  <ion-item>
+    <img src="assets/img/footer2.png">
+  </ion-item>
 </ion-footer>

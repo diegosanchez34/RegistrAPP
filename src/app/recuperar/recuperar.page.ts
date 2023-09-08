@@ -3,17 +3,16 @@ import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-recuperar',
+  templateUrl: './recuperar.page.html',
+  styleUrls: ['./recuperar.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class RecuperarPage implements OnInit {
 
-  
   usuario = '';
   clave = '';
 
-  constructor(private alertController: AlertController, private router: Router) { }
+  constructor(private alertController: AlertController,private router: Router) { }
 
   async Alerta() {
     const alert = await this.alertController.create({
@@ -27,26 +26,17 @@ export class LoginPage implements OnInit {
 
   verificar(){
     if (this.usuario.length >= 3 && this.usuario.length  <= 8) {
-      this.irHome();
+      this.irLogin();
     }
     else {
       this.Alerta();
     }    
   }
-  irHome(){
-    const variableAEnviar = this.usuario;
-    // Navega a la página de destino con el estado (state)
-    this.router.navigate(['/inicio'], {
-      state: {
-        variableAEnviar: variableAEnviar,
-      },
-    });
+  irLogin(){
+    this.router.navigate(['login']);
   }
 
   ngOnInit() {
-
-
-    
   }
 
 }
