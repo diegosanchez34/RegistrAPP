@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { IngresadoGuard } from './ingresado.guard';
-import { NoIngresadoGuard } from './no-ingresado.guard';
 
-//rutas entre páginas
 const routes: Routes = [
   {
     path: '',
@@ -16,18 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
-    canActivate: [IngresadoGuard]
-  },
-  {
-    path: 'registro',
-    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule),
-    canActivate: [IngresadoGuard]
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'inicio',
-    loadChildren: () => import('./users/inicio/inicio.module').then( m => m.InicioPageModule),
-    canActivate: [IngresadoGuard]
+    loadChildren: () => import('./users/inicio/inicio.module').then( m => m.InicioPageModule)
   },
   {
     path: 'micuenta',
@@ -40,11 +30,13 @@ const routes: Routes = [
   {
     path: 'ajustes',
     loadChildren: () => import('./users/ajustes/ajustes.module').then( m => m.AjustesPageModule)
-  },
-  {
+  },  {
     path: 'recuperar',
     loadChildren: () => import('./recuperar/recuperar.module').then( m => m.RecuperarPageModule)
   }
+
+
+
 ];
 
 @NgModule({

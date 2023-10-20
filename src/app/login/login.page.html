@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-buttons slot="end">
+  <ion-toolbar>
+    <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Iniciar sesión</ion-title>
@@ -8,33 +8,20 @@
   <meta name="color-scheme" content="dark" />
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding dark">
+<ion-content [fullscreen]="true"  class="ion-padding" class="dark">
   <div class="center-content">
     <img width="70%" src="../../assets/img/Logo Duoc UC.png"><br>
   </div>
-  <form [formGroup]="formularioLogin">
-    <ion-item>
-      <ion-input type="text" formControlName="nombre" label="Nombre" placeholder="Ingrese su usuario"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="password" formControlName="password" label="Contraseña" placeholder="Ingrese su contraseña"></ion-input>
-    </ion-item>
-  </form>
+  <ion-item><ion-input type="text" [(ngModel)]="usuario" label="Usuario" placeholder="Ingrese su usuario"></ion-input></ion-item>
+  <ion-item><ion-input type="password" [(ngModel)]="clave" label="Contraseña" placeholder="Ingrese su contraseña"></ion-input></ion-item>
   <br>
-  <ion-button expand="block" (click)="ingresar()">
-    Ingresar
-  </ion-button>
+  <ion-button id="ingresar" (click)="verificar()" expand="block">INGRESAR</ion-button>
   <br>
-  <p class="center-text">¿Olvidó su contraseña? <a [routerLink]="['/recuperar']">Recupérala aquí.</a></p>
+  <p class="center-text">¿Olvidó su contraseña? <a [routerLink]="['/recuperar']">Recupérala aquí. </a></p>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="end">
-      <ion-button [routerLink]="['/registro']">Registrarse</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+<ion-footer >
   <ion-item>
-    <img src="../../assets/img/footer1.png">
+   <img src="../../assets/img/footer1.png">
   </ion-item>
 </ion-footer>

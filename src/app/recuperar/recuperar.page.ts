@@ -33,7 +33,7 @@ export class RecuperarPage implements OnInit {
     }    
   }
   irLogin(){
-    this.router.navigate(['/login']);
+    this.router.navigate(['login']);
   }
 
   ngOnInit() {
