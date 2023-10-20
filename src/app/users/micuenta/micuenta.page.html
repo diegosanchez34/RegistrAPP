@@ -7,12 +7,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  
-</ion-content>
+<ion-content >
+  <ion-list [inset]="true">
+    <ion-list-header>
+      <ion-label>Mi cuenta</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+      <ion-label>Usuario:</ion-label>
+        <p class="center-text" *ngIf="usuario">{{ usuario.nombre }}</p>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+      <ion-label>Contraseña</ion-label>
+      <p class="center-text" *ngIf="usuario">{{ usuario.password }}</p>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="business-outline" slot="start"></ion-icon>
+      <ion-label>Sede:</ion-label>
+      <p class="center-text">Puerto montt</p>
+    </ion-item>
+  <br>
 
-<ion-footer>
-  <ion-item>
-    <img src="assets/img/footer2.png">
-  </ion-item>
-</ion-footer>
