@@ -10,11 +10,17 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="center-content">
-    <h1 class="center-text">Bienvenido, {{usuario}}</h1>
+    <h1 class="center-text" *ngIf="usuario">
+      <p>Bienvenido {{ usuario.nombre }}</p>
+    </h1>
     <br>
     <img height="200" src="assets/img/3449610.png">
     <br>
-    <p class="center-text"><b>RegistrAPP</b> te ayudará a mejorar tu experiencia en el Duoc UC, agilizando procesos y dándote mayor eficiencia durante tus horas de estudio.</p>
+    <ion-card class="center-content">
+      <ion-card-content>
+        <b>RegistrAPP</b> te ayudará a mejorar tu experiencia en el Duoc UC, agilizando procesos y dándote mayor eficiencia durante tus horas de estudio.
+      </ion-card-content>
+    </ion-card>
     <p *ngFor="let post of data"> API: {{post.title}}</p>
   </div>
 </ion-content>
