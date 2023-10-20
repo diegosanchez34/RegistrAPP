@@ -7,11 +7,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-list [inset]="true">
-    <ion-list-header>
-      <ion-label>Mi cuenta</ion-label>
-    </ion-list-header>
     <ion-item>
       <ion-icon name="person-circle-outline" slot="start"></ion-icon>
       <ion-label>Usuario:</ion-label>
@@ -27,5 +24,14 @@
       <ion-label>Sede:</ion-label>
       <p class="center-text">Puerto montt</p>
     </ion-item>
-  <br>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <ion-item>
+    <img src="assets/img/footer3.png">
+  </ion-item>
+</ion-footer>
+
 
