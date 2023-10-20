@@ -27,23 +27,27 @@ const routes: Routes = [
   {
     path: 'inicio',
     loadChildren: () => import('./users/inicio/inicio.module').then( m => m.InicioPageModule),
-    canActivate: [IngresadoGuard]
+    canActivate: [NoIngresadoGuard]
   },
   {
     path: 'micuenta',
-    loadChildren: () => import('./users/micuenta/micuenta.module').then( m => m.MicuentaPageModule)
+    loadChildren: () => import('./users/micuenta/micuenta.module').then( m => m.MicuentaPageModule),
+    canActivate: [NoIngresadoGuard]
   },
   {
     path: 'qr',
-    loadChildren: () => import('./users/qr/qr.module').then( m => m.QrPageModule)
+    loadChildren: () => import('./users/qr/qr.module').then( m => m.QrPageModule),
+    canActivate: [NoIngresadoGuard]
   },
   {
     path: 'ajustes',
-    loadChildren: () => import('./users/ajustes/ajustes.module').then( m => m.AjustesPageModule)
+    loadChildren: () => import('./users/ajustes/ajustes.module').then( m => m.AjustesPageModule),
+    canActivate: [NoIngresadoGuard]
   },
   {
     path: 'recuperar',
-    loadChildren: () => import('./recuperar/recuperar.module').then( m => m.RecuperarPageModule)
+    loadChildren: () => import('./recuperar/recuperar.module').then( m => m.RecuperarPageModule),
+    canActivate: [IngresadoGuard]
   }
 ];
 

@@ -18,8 +18,8 @@ export class NoIngresadoGuard implements CanActivate {
         this.navCtrl.navigateRoot('inicio');
         return false;
       }else{
+        this.navCtrl.navigateRoot('login');
         return true;
       }
+    }
   }
-  
-}
