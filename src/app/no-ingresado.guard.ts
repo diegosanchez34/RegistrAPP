@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-//restringe la entrada a página si no esta iniciado con un usuario
 export class NoIngresadoGuard implements CanActivate {
 
   constructor(public navCtrl: NavController){}
@@ -14,11 +13,14 @@ export class NoIngresadoGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(localStorage.getItem('ingresado')){
-        this.navCtrl.navigateRoot('inicio');
-        return false;
-      }else{
+      if(localStorage.getItem('ingresado'))
+      {
         return true;
+      }
+      else
+      {
+        this.navCtrl.navigateRoot('login');
+        return false;
       }
   }
   
