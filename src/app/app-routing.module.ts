@@ -30,13 +30,11 @@ const routes: Routes = [
   {
     path: 'ajustes',
     loadChildren: () => import('./users/ajustes/ajustes.module').then( m => m.AjustesPageModule)
-  },  {
+  },
+  {
     path: 'recuperar',
     loadChildren: () => import('./recuperar/recuperar.module').then( m => m.RecuperarPageModule)
-  }
-
-
-
+  },
 ];
 
 @NgModule({

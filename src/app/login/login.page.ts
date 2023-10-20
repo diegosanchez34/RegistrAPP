@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -33,6 +34,7 @@ export class LoginPage implements OnInit {
       this.Alerta();
     }    
   }
+
   irHome(){
     const variableAEnviar = this.usuario;
     // Navega a la página de destino con el estado (state)
