@@ -18,6 +18,13 @@ export class InicioPage implements OnInit {
   }
 
   ngOnInit() {
+    const usuarioString = localStorage.getItem('usuario');
+
+    if (usuarioString) {
+      this.usuario = JSON.parse(usuarioString);
+    }
+
+
     this.res.getPosts().subscribe((apirest:any)=>{this.data=apirest});
     // Recupera los datos del estado (state) de navegación
     const navigation = this.router.getCurrentNavigation();
