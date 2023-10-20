@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
-
+import { AlertController,NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-inicio',
@@ -13,7 +13,7 @@ export class InicioPage implements OnInit {
   usuario:any;
   data:any;
 
-  constructor(private router: Router, private res: ApiService) { 
+  constructor(private router: Router, private res: ApiService, public navCtrl: NavController,private alertController: AlertController) { 
 
   }
 
@@ -36,6 +36,29 @@ export class InicioPage implements OnInit {
     }
   }
 
-  
+  async cerrar() {
+    const alert = await this.alertController.create({
+      header: 'Cerrar Sesión',
+      message: '¿Estás seguro de que desea derrar su sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+            console.log('El usuario canceló');
+          },
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            localStorage.setItem('ingresado', 'false');
+            window.location.reload();
+            this.router.navigate(['/login']);            
+          },
+        }        
+      ]
+    });
+    await alert.present();
+  }
+
 
 }
