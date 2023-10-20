@@ -1,3 +1,4 @@
+<ion-content color="light">
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
@@ -6,11 +7,26 @@
     <ion-title>Ajustes</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true"  class="ion-padding">
-
-</ion-content>
-
+  <ion-list [inset]="true">
+    <ion-list-header>
+      <ion-label>Configuraciones</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+      <ion-label>Seguridad </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="document-attach-outline" slot="start"></ion-icon>
+      <ion-label>Certificados</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="bar-chart-outline" slot="start"></ion-icon>
+      <ion-label>AVA Blackboard</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="location-outline" slot="start"></ion-icon>
+      <ion-label>Ubicación</ion-label>
+    </ion-item>
 <ion-footer>
   <ion-item>
     <img src="assets/img/footer2.png">
