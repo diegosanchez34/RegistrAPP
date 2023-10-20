@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mi Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <h4>Conoce a tus profesores:</h4>
+
+  <ion-card *ngFor="let post of data">
+    <img src={{post.url}}>
+    <ion-card-header>
+      <ion-card-title>Profesor: {{post.id}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Descripcion: {{post.title}}</ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-item>
+    <img src="assets/img/footer2.png">
+  </ion-item>
+</ion-footer>
+  

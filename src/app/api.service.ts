@@ -21,7 +21,7 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   getPosts():Observable<any>{
-      return this.http.get(this.apiURL+'/posts/').pipe(
+      return this.http.get(this.apiURL+'/photos/').pipe(
       retry(3)
       );
     }

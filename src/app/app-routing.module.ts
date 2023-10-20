@@ -51,10 +51,17 @@ const routes: Routes = [
     canActivate: [IngresadoGuard]
   },
   {
+    path: 'profesores',
+    loadChildren: () => import('./users/profesores/profesores.module').then( m => m.ProfesoresPageModule),
+    canActivate: [NoIngresadoGuard]
+  },
+  {
     path: '**',
     component: NotFoundPage,
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
+ 
+
 
 ];
 
