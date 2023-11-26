@@ -10,13 +10,18 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <h4>Conoce a tus profesores:</h4>
   <br>
-  <ion-card *ngFor="let post of data">
-    <img src={{post.url}}>
-    <ion-card-header>
-      <ion-card-title>Profesor: {{post.id}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>Descripcion: {{post.title}}</ion-card-content>
-  </ion-card>
+  <div *ngFor="let post of data; let i = index">
+    <div *ngIf="i < 10">
+      <ion-card>
+          <img src={{post.url}}>
+          <ion-card-header>
+            <ion-card-title>Profesor: {{post.id}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content><b>Descripcion:</b> {{post.title}}</ion-card-content>  
+      </ion-card>
+    </div>
+  </div>
+  
 </ion-content>
 
 <ion-footer>
