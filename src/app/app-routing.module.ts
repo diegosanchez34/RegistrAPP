@@ -56,13 +56,14 @@ const routes: Routes = [
     canActivate: [NoIngresadoGuard]
   },
   {
+    path: 'cambiar',
+    loadChildren: () => import('./cambiar/cambiar.module').then( m => m.CambiarPageModule)
+  },
+  {
     path: '**',
     component: NotFoundPage,
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
- 
-
-
 ];
 
 @NgModule({

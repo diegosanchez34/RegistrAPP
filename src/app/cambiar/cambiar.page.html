@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cambiar Contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" color="light">
+  <ion-note>Para cambiar tu contraseña primero debemos verificar que eres el dueño de la cuenta. Ingresa tu contraseña actual y después ingresa tu nueva contraseña. </ion-note>
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-input label="Contraseña actual" labelPlacement="floating" placeholder="" type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Nueva contraseña" labelPlacement="floating" placeholder="" type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Confirmar nueva contraseña " labelPlacement="floating" placeholder="" type="password"></ion-input>
+    </ion-item> 
+  </ion-list> 
+  <ion-button (click)="actualizar()" expand="block">Actualizar contraseña</ion-button>  
+</ion-content>
