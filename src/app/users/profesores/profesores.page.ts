@@ -14,6 +14,7 @@ export class ProfesoresPage implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
 }
