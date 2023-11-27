@@ -10,17 +10,23 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="center-content">
     <br>
-    <img height="200" src="assets/img/RegistrAPP.png"><br>
+    <img height="200" *ngIf="!mostrarImagenGenerada" src="assets/img/qr-code-qrjm.png">
     <br>
-    <ion-button id="escanear">Escanear Código QR</ion-button>
-    <ion-button id="generar">Generar Código QR</ion-button>  
+    <div>
+      <video id="video" width="400" height="300" autoplay></video>
+      <ion-row class="ion-justify-content-center">
+        <ion-button (click)="scan()">Escanear Código QR</ion-button>
+      </ion-row>
+    </div>
+    <ion-button id="generar" (click)="mostrarImagen()">Generar Código QR</ion-button>
   </div>
+
+
   <div>
-    <img [src]="getPhoto()" style="width: 400px;" /><br>
-    <ion-row class="ion-justify-content-center">
-    <ion-button (click)="takePicture()">Camara</ion-button>
-  </ion-row>
+    <video id="video" width="400" height="500" autoplay></video>
+
   </div>
+  
 </ion-content>
 
 <ion-footer>

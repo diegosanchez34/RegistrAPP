@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Camera, CameraResultType } from '@capacitor/camera';
 import {CameraSource} from '@capacitor/camera/dist/esm/definitions';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';      
+import { BrowserMultiFormatReader, Result } from '@zxing/library';
 
 @Component({
   selector: 'app-qr',
   templateUrl: './qr.page.html',
   styleUrls: ['./qr.page.scss'],
 })
-export class QrPage implements OnInit {
+export class QrPage implements OnInit, OnDestroy {
+
+  decodedText: string = '';
+  codeReader: BrowserMultiFormatReader = new BrowserMultiFormatReader();
 
   imageSource:any;
 
@@ -16,6 +20,24 @@ export class QrPage implements OnInit {
 
   ngOnInit() {
     
+  }
+
+  ngOnDestroy() {
+    this.codeReader.reset();
+  }
+
+  scan() {
+    this.codeReader
+  .decodeFromInputVideoDevice(undefined, 'video')
+  .then((result: Result) => {
+    console.log('Decoded Text:', result.getText());
+    this.decodedText = result.getText();
+  })
+  .catch((err) => {
+    console.error('Error decoding:', err);
+  });
+
+     // this.takePicture();
   }
 
   takePicture = async () => {
@@ -34,6 +56,11 @@ export class QrPage implements OnInit {
     return this.imageSource
   }
 
+  mostrarImagenGenerada: boolean = true;
+
+  mostrarImagen() {
+    this.mostrarImagenGenerada = false;
+  }
 
 }
 
