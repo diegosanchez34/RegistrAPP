@@ -11,6 +11,7 @@ import { BrowserMultiFormatReader, Result } from '@zxing/library';
 })
 export class QrPage implements OnInit, OnDestroy {
 
+  ancho = screen.width;
   decodedText: string = '';
   codeReader: BrowserMultiFormatReader = new BrowserMultiFormatReader();
 
@@ -18,18 +19,14 @@ export class QrPage implements OnInit, OnDestroy {
 
   constructor(private DomSanitizer: DomSanitizer) { }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() { }
 
   ngOnDestroy() {
     this.codeReader.reset();
   }
 
   scan() {
-    this.codeReader
-  .decodeFromInputVideoDevice(undefined, 'video')
-  .then((result: Result) => {
+    this.codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result: Result) => {
     console.log('Decoded Text:', result.getText());
     this.decodedText = result.getText();
   })
@@ -56,10 +53,10 @@ export class QrPage implements OnInit, OnDestroy {
     return this.imageSource
   }
 
-  mostrarImagenGenerada: boolean = true;
+  mostrarImagenGenerada: boolean = false;
 
   mostrarImagen() {
-    this.mostrarImagenGenerada = false;
+    this.mostrarImagenGenerada = !this.mostrarImagenGenerada;
   }
 
 }

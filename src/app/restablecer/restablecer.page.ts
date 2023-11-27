@@ -37,11 +37,10 @@ export class RestablecerPage implements OnInit {
       const loading = await this.utilsSvc.loading();
       await loading.present();
 
-      this.firebaseSvc.singIn(this.formulario.value as usuario).then(respuesta => {
-
-        this.getUSerInfo(respuesta.user.uid);
-        
+      this.firebaseSvc.sendRecoveryEmail(this.formulario.value.email).then(respuesta => {
+       
         this.formulario.reset();
+        this.CorreoEnviado();
 
       }).catch(error => {
         console.log(error);
@@ -79,23 +78,14 @@ export class RestablecerPage implements OnInit {
     await alert.present();
   }
 
-  async getUSerInfo(id: string){
-
-    const loading = await this.utilsSvc.loading();
-    await loading.present();
-    
-    let path = `users/${id}`;
-
-    this.firebaseSvc.getDocument(path).then((user: usuario) => {
-
-      localStorage.setItem('usuario',JSON.stringify(user)); 
-      localStorage.setItem('ingresado', 'true');       
-      this.router.navigate(['/inicio']);
-      
-    }).finally(()=>{
-      loading.dismiss();
-    })
-    this.formulario.reset();
+  async CorreoEnviado() {
+    const alert = await this.Alert.create({
+      header: 'Correo enviado',
+      message: 'Te hemos enviado un correo con las instrucciones que debes seguir para cambiar tu contraseña',
+      buttons: ['Aceptar']
+    });
+    await alert.present();    
+    await this.router.navigate(['/login']);
   }
 
 }
