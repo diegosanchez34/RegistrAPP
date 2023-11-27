@@ -46,11 +46,6 @@ const routes: Routes = [
     canActivate: [NoIngresadoGuard]
   },
   {
-    path: 'recuperar',
-    loadChildren: () => import('./recuperar/recuperar.module').then( m => m.RecuperarPageModule),
-    canActivate: [IngresadoGuard]
-  },
-  {
     path: 'profesores',
     loadChildren: () => import('./users/profesores/profesores.module').then( m => m.ProfesoresPageModule),
     canActivate: [NoIngresadoGuard]
@@ -58,12 +53,17 @@ const routes: Routes = [
   {
     path: 'cambiar',
     loadChildren: () => import('./cambiar/cambiar.module').then( m => m.CambiarPageModule)
+  },  
+  {
+    path: 'restablecer',
+    loadChildren: () => import('./restablecer/restablecer.module').then( m => m.RestablecerPageModule)
   },
   {
     path: '**',
     component: NotFoundPage,
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
+
 ];
 
 @NgModule({

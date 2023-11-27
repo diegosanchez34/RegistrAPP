@@ -5,29 +5,35 @@
   <meta name="color-scheme" content="dark" />
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding dark">
+<ion-content [fullscreen]="true" class="ion-padding"  color="light">
   <div class="center-content">
-    <img width="70%" src="../../assets/img/Logo Duoc UC.png"><br>
+    <img width="70%" src="assets/img/logo.png" style="padding-top: 20px; padding-bottom: 20px;">
   </div>
-  <form [formGroup]="formularioLogin">
-    <ion-item>
-      <ion-input type="text" formControlName="nombre" label="Nombre" placeholder="Ingrese su usuario"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="password" formControlName="password" label="Contraseña" placeholder="Ingrese su contraseña"></ion-input>
-    </ion-item>
-  </form>
-  <br>
-  <ion-button expand="block" (click)="ingresar()">
-    Ingresar
-  </ion-button>
-  <br>
-  <p class="center-text">¿Olvidó su contraseña?  <a [routerLink]="['/recuperar']"> Recupérala aquí.</a></p>
-  <p class="center-text">¿No tienes cuenta?  <a [routerLink]="['/registro']"> Registrate aquí.</a></p>
+
+  <form [formGroup]="form" (ngSubmit)="ingresar()" (keypress.enter)="ingresar()">
+    <ion-list  [inset]="true">
+      <ion-item>
+        <ion-icon slot="start" name="mail-outline" color="primary"></ion-icon>
+        <ion-input type="text" placeholder="Ingresa tu correo" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="lock-closed-outline" color="primary"></ion-icon>
+        <ion-input type="{{tipo}}" placeholder="Ingresa tu contraseña" formControlName="password"></ion-input>
+        <ion-button (click)="ojito()" slot="end" shape="round" fill="clear">
+          <ion-icon slot="icon-only" [name]="hide ? 'eye-outline' : 'eye-off-outline'" color="medium"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" type="submit" style="padding-top: 20px; padding-bottom: 13px;">Ingresar
+      <ion-icon slot="end" name="log-in-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button expand="block" style="padding-bottom: 20px;" fill="outline" [routerLink]="['/registro']">Regístrate
+      <ion-icon slot="end" name="person-add-outline"></ion-icon>
+    </ion-button>
+  </form> 
+
+  <p class="center-text">¿Olvidaste tu contraseña?  <a [routerLink]="['/restablecer']"> Recupérala aquí.</a></p>
 </ion-content>
 
-<ion-footer>
-  <ion-item>
-    <img src="../../assets/img/footer1.png">
-  </ion-item>
-</ion-footer>

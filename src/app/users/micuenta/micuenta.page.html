@@ -11,13 +11,13 @@
   <ion-list [inset]="true">
     <ion-item>
       <ion-icon name="person-circle-outline" slot="start"></ion-icon>
-      <ion-label>Usuario:</ion-label>
-        <p class="center-text" *ngIf="usuario">{{ usuario.nombre }}</p>
+      <ion-label>Nombre:</ion-label>
+        <p class="center-text" *ngIf="usuario">{{ usuario.name }}</p>
     </ion-item>
     <ion-item>
-      <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
-      <ion-label>Contraseña</ion-label>
-      <p class="center-text" *ngIf="usuario">{{ usuario.password }}</p>
+      <ion-icon name="mail-outline" slot="start"></ion-icon>
+      <ion-label>Correo:</ion-label>
+      <p class="center-text" *ngIf="usuario">{{ usuario.email }}</p>
     </ion-item>
     <ion-item>
       <ion-icon name="business-outline" slot="start"></ion-icon>

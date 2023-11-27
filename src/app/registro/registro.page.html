@@ -1,31 +1,36 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button text="Volver"></ion-back-button>
     </ion-buttons>
     <ion-title>Registro</ion-title>
   </ion-toolbar>
+  <meta name="color-scheme" content="dark" />
 </ion-header>
 
-<ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Registro</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <form [formGroup]="formularioRegistro" (keyup.enter)="guardar()">
-        <ion-item>
-          <ion-input type="text" label="Nombre" position="floating" placeholder="Ingrese su usuario" formControlName="nombre"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input type="password" label="Contraseña" position="floating" placeholder="Ingrese su contraseña" formControlName="password"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input type="password" label="Contraseña" position="floating" placeholder="Confirme su contraseña" formControlName="confirmacionPassword"></ion-input>
-        </ion-item>
-        <br>
-        <ion-button (click)="guardar()">Registrarse</ion-button>
-      </form>
-    </ion-card-content>
-  </ion-card>
+<ion-content [fullscreen]="true" class="ion-padding"  color="light">
+  <ion-note style="padding-top: 20px; padding-bottom: 20px;">Ingresa tus datos en los campos a continuación para poder crear tu cuenta.</ion-note>
+
+  <form [formGroup]="form" (ngSubmit)="registrar()" (keypress.enter)="registrar()">
+    <ion-list  [inset]="true">
+      <ion-item>
+        <ion-icon slot="start" name="person-outline" color="primary"></ion-icon>
+        <ion-input type="text" placeholder="Ingresa tu nombre" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="mail-outline" color="primary"></ion-icon>
+        <ion-input type="text" placeholder="Ingresa tu correo" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="lock-closed-outline" color="primary"></ion-icon>
+        <ion-input type="{{tipo}}" placeholder="Ingresa tu contraseña" formControlName="password"></ion-input>
+        <ion-button (click)="ojito()" slot="end" shape="round" fill="clear">
+          <ion-icon slot="icon-only" [name]="hide ? 'eye-outline' : 'eye-off-outline'" color="medium"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" type="submit" style="padding-top: 20px; padding-bottom: 13px;">Crear cuenta</ion-button>
+  </form> 
 </ion-content>
+

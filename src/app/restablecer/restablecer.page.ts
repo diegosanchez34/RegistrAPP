@@ -1,40 +1,35 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { AlertController, LoadingController, NavController } from '@ionic/angular';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { AlertController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 import { usuario } from '../models/user.model';
 import { UtilsService } from '../utils.service';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.page.html',
-  styleUrls: ['./registro.page.scss'],
+  selector: 'app-restablecer',
+  templateUrl: './restablecer.page.html',
+  styleUrls: ['./restablecer.page.scss'],
 })
-export class RegistroPage implements OnInit {
 
-  tipo: string ="password";
-  hide: boolean = true;
+export class RestablecerPage implements OnInit {
 
   firebaseSvc = inject(FirebaseService);
   utilsSvc = inject(UtilsService)
 
-  form = new FormGroup({
-    id: new FormControl(''),
+  formulario = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
-    name: new FormControl('', [Validators.required]),
   })  
 
   constructor(public Alert: AlertController,public navCtrl: NavController,private router: Router) {}
 
   ngOnInit() {}
 
-  async registrar(){
-    if(this.form.controls.email.errors?.['required'] || this.form.controls.password.errors?.['required'] || this.form.controls.name.errors?.['required']){
+  async recuperar(){
+    if(this.formulario.controls.email.errors?.['required']){
       this.AlertaVacio();
     }
-    else if(this.form.controls.email.errors?.['email'] ){
+    else if(this.formulario.controls.email.errors?.['email'] ){
       this.AlertaEmail();
     }
     else {
@@ -42,12 +37,11 @@ export class RegistroPage implements OnInit {
       const loading = await this.utilsSvc.loading();
       await loading.present();
 
-      this.firebaseSvc.singUp(this.form.value as usuario).then(async respuesta => {
+      this.firebaseSvc.singIn(this.formulario.value as usuario).then(respuesta => {
 
-        await this.firebaseSvc.updateUser(this.form.value.name);
-        let id = respuesta.user.uid;
-        this.form.controls.id.setValue(id);
-        this.setUSerInfo(id);
+        this.getUSerInfo(respuesta.user.uid);
+        
+        this.formulario.reset();
 
       }).catch(error => {
         console.log(error);
@@ -84,32 +78,24 @@ export class RegistroPage implements OnInit {
     });
     await alert.present();
   }
-  
-  ojito(){
-    this.hide = !this.hide;
-    if (this.hide)
-      this.tipo = 'password';
-    else
-    this.tipo = 'text';
-  }
 
-  async setUSerInfo(id: string){
+  async getUSerInfo(id: string){
 
     const loading = await this.utilsSvc.loading();
     await loading.present();
-
+    
     let path = `users/${id}`;
-    delete this.form.value.password;
 
-    this.firebaseSvc.setDocument(path,this.form.value).then(async respuesta => {
+    this.firebaseSvc.getDocument(path).then((user: usuario) => {
 
-      localStorage.setItem('usuario',JSON.stringify(this.form.value));   
-      localStorage.setItem('ingresado', 'true');     
+      localStorage.setItem('usuario',JSON.stringify(user)); 
+      localStorage.setItem('ingresado', 'true');       
       this.router.navigate(['/inicio']);
-      this.form.reset();
       
     }).finally(()=>{
       loading.dismiss();
     })
+    this.formulario.reset();
   }
+
 }
