@@ -21,11 +21,22 @@
     </ion-item>
   </ion-button>
 
+  <ion-list [inset]="true" *ngIf="mostrarTexto">
+    <ion-item>
+      <ion-label>Asignatura:</ion-label>
+      <ion-label style="white-space: normal">{{ asignatura.nombre }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Profesor:</ion-label>
+      <ion-label >{{ asignatura.profesor }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha:</ion-label>
+      <ion-label >{{ asignatura.fecha }}</ion-label>
+    </ion-item>
+  </ion-list>
 
-  <ion-card *ngIf="mostrarTexto">
-    <ion-card-content>
-      {{decodedText}}
-    </ion-card-content>
-  </ion-card> 
+
+ 
 </ion-content>
 

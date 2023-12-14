@@ -11,6 +11,7 @@ import { BrowserMultiFormatReader, Result } from '@zxing/library';
 })
 export class QrPage implements OnInit, OnDestroy {
 
+  asignatura: any;
   ancho = screen.width;
   decodedText: string = '';
   mostrarTexto: boolean = false;  
@@ -26,14 +27,17 @@ export class QrPage implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.codeReader.reset();
   }
+  
 
   scan() {
     this.mostrarCamara = !this.mostrarCamara;
+    this.mostrarTexto = false;
     if(this.mostrarCamara){
       this.codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result: Result) => {
         console.log('Decoded Text:', result.getText());
-        this.decodedText = result.getText();
+        this.asignatura = JSON.parse(result.getText());
         this.mostrarTexto = true;
+        this.mostrarCamara = false;
       })
       .catch((err) => {
         console.error('Error decoding:', err);
