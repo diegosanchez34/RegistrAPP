@@ -1,0 +1,52 @@
+/* styles.css */
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #005ea2, #ffffff); /* Gradiente desde azul hasta blanco */
+    color: #333; /* Color de texto principal */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.subject-card {
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    background-color: #ffffff; /* Color de fondo blanco para las tarjetas */
+}
+
+.subject-card:hover {
+    transform: scale(1.05);
+}
+
+.subject-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px 6px 0 0;
+}
+
+.subject-card h2 {
+    margin: 10px;
+    color: #005ea2; /* Color azul del DUOC UC para el texto en las tarjetas */
+}
+
+.container h1 {
+    color: #ffc107; /* Color blanco para el título principal */
+    font-weight: bold; /* Negrita */
+    border-radius: 20px; /* Curva del contorno del título */
+    padding: 10px 20px; /* Ajusta el espacio interno para que la curva sea más visible */
+    background-color: #005ea2; /* Fondo azul para el título */
+    display: inline-block; /* Permite aplicar border-radius y padding correctamente */
+}
+

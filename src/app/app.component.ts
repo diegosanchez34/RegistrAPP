@@ -32,6 +32,7 @@ export class AppComponent {
           text: 'Aceptar',
           handler: () => {
             this.router.navigate(['/login']); 
+            localStorage.setItem('ingresado', 'false'); 
           },
         }        
       ]

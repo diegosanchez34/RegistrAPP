@@ -3,7 +3,6 @@ import { Camera, CameraResultType } from '@capacitor/camera';
 import {CameraSource} from '@capacitor/camera/dist/esm/definitions';
 import { DomSanitizer } from '@angular/platform-browser';      
 import { BrowserMultiFormatReader, Result } from '@zxing/library';
-
 @Component({
   selector: 'app-qr',
   templateUrl: './qr.page.html',
@@ -62,7 +61,6 @@ export class QrPage implements OnInit, OnDestroy {
   getPhoto(){
     return this.imageSource
   }
-
  
 }
 
