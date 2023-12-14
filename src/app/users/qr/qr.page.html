@@ -7,37 +7,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding"  color="light">
+<ion-content [fullscreen]="true" class="ion-padding"  color="light"> 
 
-  <ion-card>
-    <img [src]="mostrarImagenGenerada ? 'assets/img/QR1.png' : 'assets/img/logo.png'">
-    <ion-card-header >
-      <ion-card-title class="texto" id="vehiculoCard">Código QR</ion-card-title>
-    </ion-card-header>
-  </ion-card> 
+  <ion-card id="carta">
+      <video *ngIf="mostrarCamara" id="video" width="{{ancho-52}}" autoplay></video>
+      <img src="assets/img/camara.png" width="{{ancho-52}}">          
+  </ion-card>  
 
-  <ion-card>
-    <video id="video" width="{{ancho}}" autoplay></video>
-    <ion-card-header >
-      <ion-card-title class="texto" id="vehiculoCard">Escaner</ion-card-title>
-    </ion-card-header>
+  <ion-button (click)="scan()" expand="block">
+    <ion-item color="primary" lines="none">
+      <ion-icon slot="start" name="camera-outline"></ion-icon>
+      <ion-label>Escanear Código QR</ion-label>
+    </ion-item>
+  </ion-button>
+
+
+  <ion-card *ngIf="mostrarTexto">
     <ion-card-content>
       {{decodedText}}
     </ion-card-content>
-  </ion-card>   
-
-  <ion-list [inset]="true">
-    <ion-item id="generar" [button]="true" (click)="mostrarImagen()">
-      <ion-icon slot="start" n name="qr-code-outline"></ion-icon>
-      <ion-label>Generar Código QR</ion-label>
-    </ion-item>    
-  </ion-list>
-  
-  <ion-list [inset]="true">
-    <ion-item [button]="true" (click)="scan()">
-      <ion-icon slot="start" name="camera-outline"></ion-icon>
-      <ion-label>Escanear Código QR</ion-label>
-    </ion-item>    
-  </ion-list>
+  </ion-card> 
 </ion-content>
 

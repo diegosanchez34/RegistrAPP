@@ -13,6 +13,8 @@ export class QrPage implements OnInit, OnDestroy {
 
   ancho = screen.width;
   decodedText: string = '';
+  mostrarTexto: boolean = false;  
+  mostrarCamara: boolean = false; 
   codeReader: BrowserMultiFormatReader = new BrowserMultiFormatReader();
 
   imageSource:any;
@@ -26,13 +28,17 @@ export class QrPage implements OnInit, OnDestroy {
   }
 
   scan() {
-    this.codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result: Result) => {
-    console.log('Decoded Text:', result.getText());
-    this.decodedText = result.getText();
-  })
-  .catch((err) => {
-    console.error('Error decoding:', err);
-  });
+    this.mostrarCamara = !this.mostrarCamara;
+    if(this.mostrarCamara){
+      this.codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result: Result) => {
+        console.log('Decoded Text:', result.getText());
+        this.decodedText = result.getText();
+        this.mostrarTexto = true;
+      })
+      .catch((err) => {
+        console.error('Error decoding:', err);
+      });
+    }   
 
      // this.takePicture();
   }
@@ -53,12 +59,7 @@ export class QrPage implements OnInit, OnDestroy {
     return this.imageSource
   }
 
-  mostrarImagenGenerada: boolean = false;
-
-  mostrarImagen() {
-    this.mostrarImagenGenerada = !this.mostrarImagenGenerada;
-  }
-
+ 
 }
 
 

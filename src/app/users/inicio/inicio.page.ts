@@ -17,27 +17,4 @@ export class InicioPage implements OnInit {
   }
 
   ngOnInit() {}
-
-  async cerrar() {
-    const alert = await this.alertController.create({
-      header: 'Cerrar Sesión',
-      message: '¿Estás seguro de que desea derrar su sesión?',
-      buttons: [
-        {
-          text: 'Cancelar',
-          handler: () => {
-            console.log('El usuario canceló');
-          },
-        },
-        {
-          text: 'Aceptar',
-          handler: () => {
-            localStorage.setItem('ingresado', 'false');
-            this.router.navigate(['/login']);            
-          },
-        }        
-      ]
-    });
-    await alert.present();
-  }
 }
